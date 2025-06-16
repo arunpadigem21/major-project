@@ -1,0 +1,18 @@
+runtime: python311
+service: pre-iam
+entrypoint: gunicorn -b :$PORT pre_iam.wsgi
+env_variables:
+  DJANGO_SETTINGS_MODULE: "pre_iam.settings"
+
+handlers:
+# Serve static files collected by collectstatic
+- url: /static
+  static_dir: staticfiles
+
+# (Optional) Serve media files if your project handles uploads
+- url: /media
+  static_dir: media
+
+# Main app handler
+- url: /.*
+  script: auto

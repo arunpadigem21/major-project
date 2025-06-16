@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="{% static 'images/favicon.svg' %}" type="image/x-icon" />
+  <title>Sign In | Admin Only</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/lineicons.css' %}" />
+  <link rel="stylesheet" href="https://cdn.materialdesignicons.com/7.2.96/css/materialdesignicons.min.css" />
+  <link rel="stylesheet" href="{% static 'css/fullcalendar.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/materialdesignicons.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader"><div class="spinner"></div></div>
+
+  <!-- Main Wrapper -->
+  <main class="main-wrapper">
+    <!-- Signin Section -->
+    <section class="signin-section">
+      <div class="container-fluid">
+        <div class="row g-0 auth-row">
+
+          <!-- Left Cover -->
+          <div class="col-lg-6">
+            <div class="auth-cover-wrapper bg-primary-100">
+              <div class="auth-cover">
+                <div class="title text-center">
+                  <h1 class="text-primary mb-10">Welcome Back</h1>
+                  <p class="text-medium">Sign in to your Admin account</p>
+                </div>
+                <div class="cover-image">
+                  <img src="{% static 'images/auth/signin-image.svg' %}" alt="Sign In Image" />
+                </div>
+                <div class="shape-image">
+                  <img src="{% static 'images/auth/shape.svg' %}" alt="Shape" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Signin Form -->
+          <div class="col-lg-6">
+            <div class="signin-wrapper">
+              <div class="form-wrapper">
+                <h6 class="mb-15">Admin Login</h6>
+                <p class="text-sm mb-25">Only superusers can log in here</p>
+
+                {% if error %}
+                  <div class="alert alert-danger text-sm text-center">
+                    {{ error }}
+                  </div>
+                {% endif %}
+
+                <form method="POST" action="{% url 'signin' %}">
+                  {% csrf_token %}
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="input-style-1">
+                        <label>Username</label>
+                        <input type="text" name="username" placeholder="Enter your username" required />
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="input-style-1">
+                        <label>Password</label>
+                        <div class="position-relative">
+                          <input type="password" name="password" id="passwordInput" placeholder="Enter your password" required />
+                          <span class="position-absolute top-50 end-0 translate-middle-y me-3" style="cursor: pointer;" onclick="togglePassword()">
+                            <i id="toggleIcon" class="mdi mdi-eye-off-outline"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 mt-3">
+                      <div class="button-group d-flex justify-content-center">
+                        <button type="submit" class="main-btn primary-btn btn-hover w-100 text-center">
+                          Sign In
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+                <div class="singin-option pt-40">
+                  <p class="text-sm text-medium text-center text-gray">Admin-only system</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- JS -->
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/Chart.min.js' %}"></script>
+  <script src="{% static 'js/dynamic-pie-chart.js' %}"></script>
+  <script src="{% static 'js/moment.min.js' %}"></script>
+  <script src="{% static 'js/fullcalendar.js' %}"></script>
+  <script src="{% static 'js/jvectormap.min.js' %}"></script>
+  <script src="{% static 'js/world-merc.js' %}"></script>
+  <script src="{% static 'js/polyfill.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+
+  <!-- Toggle Password Script -->
+  <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById('passwordInput');
+      const toggleIcon = document.getElementById('toggleIcon');
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('mdi-eye-off-outline');
+        toggleIcon.classList.add('mdi-eye-outline');
+      } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('mdi-eye-outline');
+        toggleIcon.classList.add('mdi-eye-off-outline');
+      }
+    }
+  </script>
+
+</body>
+</html>
