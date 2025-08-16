@@ -1,0 +1,10 @@
+runtime: python39
+
+entrypoint: gunicorn -b :$PORT emojiemotion.wsgi
+
+env_variables:
+  DJANGO_SETTINGS_MODULE: "emojiemotion.settings"
+
+handlers:
+  - url: /.*
+    script: auto
