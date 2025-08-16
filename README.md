@@ -1,4 +1,4 @@
-# 🚀 Major Project – PRE_IAM + EmojiEmotion Website
+# 🚀  PRE_IAM + EmojiEmotion Website
 
 This repository contains two components:
 
