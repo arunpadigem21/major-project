@@ -25,7 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-jqvf0g*kaebet#orn2&wm&sffu0(mz3hx!33#&(z%#-w(3#(fb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
+
 
 ALLOWED_HOSTS = ['*']
 
@@ -75,24 +76,24 @@ WSGI_APPLICATION = 'pre_iam.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 DATABASES = {
-     'default': {
-         'ENGINE': 'django.db.backends.mysql',
-        # 'HOST': '127.0.0.1',
-           'HOST': '/cloudsql/test-django-site:us-central1:preiamdb',
-         'PORT' : '3306',
-         'USER': 'root',
-         'PASSWORD': 'P@d!gew@123',
-         'NAME': 'preiam-db',
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+# DATABASES = {
+#      'default': {
+#          'ENGINE': 'django.db.backends.mysql',
+#         # 'HOST': '127.0.0.1',
+#            'HOST': '/cloudsql/test-django-site:us-central1:preiamdb',
+#          'PORT' : '3306',
+#          'USER': 'root',
+#          'PASSWORD': 'P@d!gew@123',
+#          'NAME': 'preiam-db',
          
-     }
-   }
+#      }
+#    }
 
 
 # Password validation
